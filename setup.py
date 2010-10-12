@@ -10,7 +10,7 @@ config = {
     'author'           : 'Ionut G. Stan',
     'author_email'     : 'ionut.g.stan@gmail.com',
     'url'              : 'http://github.com/igstan/regis-grep',
-    'download_url'     : 'http://github.com/igstan/redis-grep/archives/0.1.0',
+    'download_url'     : 'http://github.com/igstan/redis-grep/zipball/0.1.0',
     'version'          : '0.1.0',
     'install_requires' : ['redis'],
     'py_modules'       : ['redisgrep'],
