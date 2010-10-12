@@ -33,17 +33,18 @@ class RedisList(object):
         return '<RedisList: %s>' % (self.name)
 
     def grep(self, pattern):
-        list_length = self._redis.llen(self.name)
-        chunck = self._range_size
+        remaining_items = self._redis.llen(self.name)
+        start_index = self._range_size
 
-        while chunck <= list_length:
-            list = self._redis.lrange(self.name, chunck - self._range_size, chunck)
+        while remaining_items > 0:
+            list = self._redis.lrange(self.name, start_index - self._range_size, self._range_size)
 
             for (i, item) in enumerate(list):
                 if pattern.search(item) is not None:
-                    yield (self.name, chunck - self._range_size + i, item)
+                    yield (self.name, start_index - self._range_size + i, item)
 
-            chunck += self._range_size
+            remaining_items = remaining_items - self._range_size
+            start_index += self._range_size
 
 
 class RedisGrepper(object):
