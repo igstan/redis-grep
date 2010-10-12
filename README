@@ -1,0 +1,22 @@
+redis-grep is a Python shell script that allows searching through Redis values
+using regular expressions (compatible with Python's `re` module).
+
+For the moment, it only knows how to search string and list entries. Filtering
+key names is possible using the `--key` switch which accepts a Redis style pattern
+like the one used in the `KEYS` command.
+
+By default, it will stop as soon as it finds a match. Use the `--all` switch to
+turn off this behavior.
+
+
+    $ regis-grep --help
+    Usage: redis-grep [options] <pattern>
+
+    Options:
+    --version             show program's version number and exit
+    -h, --help            show this help message and exit
+    -a, --all             don't stop on first match
+    -k key, --key=key     limit search to keys matching this pattern
+    -o host, --host=host  host address of the Redis server
+    -p port, --port=port  port number of the Redis server
+    -d db, --db=db        database number of the Redis server
