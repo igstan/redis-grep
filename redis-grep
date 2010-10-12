@@ -1,0 +1,35 @@
+#!/usr/bin/env python
+import sys
+import re
+
+from optparse import OptionParser
+from redis import Redis
+from redisgrep import __version__, search
+
+
+def create_optparser():
+    parser = OptionParser(usage="%prog [options] <pattern>", version="RedisGrepper " + __version__)
+    parser.add_option("-a", "--all", dest="all", action="store_true", default=False,
+        help="don't stop on first match")
+    parser.add_option("-k", "--key", dest="key",
+        help="limit search to keys matching this pattern", metavar="key", default="*")
+    parser.add_option("-o", "--host", dest="host",
+        help="host address of the Redis server", metavar="host", default="localhost")
+    parser.add_option("-p", "--port", dest="port", type="int",
+        help="port number of the Redis server", metavar="port", default=6379)
+    parser.add_option("-d", "--db", dest="db",
+        help="database number of the Redis server", metavar="db", default=0)
+    return parser
+
+def main(args):
+    (options, args) = create_optparser().parse_args(args)
+    pattern = re.escape(args[1])
+    matches = search(pattern, key_pattern=options.key, host=options.host, port=options.port, db=options.db)
+
+    for match in matches:
+        print(match)
+        if not options.all:
+            return 0
+    return 0
+
+sys.exit(main(sys.argv))
