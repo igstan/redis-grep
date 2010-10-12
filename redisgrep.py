@@ -2,7 +2,6 @@
 import sys
 import re
 
-from optparse import OptionParser
 from redis import Redis
 
 __version__ = "0.1.0"
