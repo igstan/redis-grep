@@ -20,3 +20,9 @@ turn off this behavior.
     -o host, --host=host  host address of the Redis server
     -p port, --port=port  port number of the Redis server
     -d db, --db=db        database number of the Redis server
+
+
+INSTALL
+=======
+
+Run `python setup.py install` in the project root.
