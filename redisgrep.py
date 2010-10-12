@@ -4,7 +4,7 @@ import re
 
 from redis import Redis
 
-__version__ = "0.1.0"
+__version__ = "0.1.1"
 __author__ = "Ionut G. Stan"
 
 
