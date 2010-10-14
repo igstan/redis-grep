@@ -12,6 +12,7 @@ config = {
     'url'              : 'http://github.com/igstan/redis-grep',
     'download_url'     : 'http://github.com/igstan/redis-grep/zipball/0.1.1',
     'version'          : '0.1.1',
+    'license'          : 'BSD',
     'install_requires' : ['redis'],
     'py_modules'       : ['redisgrep'],
     'scripts'          : ['redis-grep'],
